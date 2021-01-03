@@ -43,13 +43,14 @@ public class Person {
 		if(person == null)
 			return false;
 		try {
-			File file = new File("../requireData/admin-user");
+			File file = new File("C:\\Users\\smajy\\git\\manage-anime\\requireData\\adminuser.txt");
 
 			Scanner scanner = new Scanner(file);
-			FileWriter writer = new FileWriter(file);
 
 			String adminData = scanner.nextLine();
 			String userData = scanner.nextLine();
+
+			FileWriter writer = new FileWriter(file);
 
 			if (person instanceof Admin) {
 				adminData = "admin = " + person.getName() + "#" + person.getPassword();
@@ -59,7 +60,7 @@ public class Person {
 			}
 
 			writer.write(adminData);
-			writer.write("/n");
+			writer.write("\n");
 			writer.write(userData);
 
 			scanner.close();
@@ -83,14 +84,14 @@ public class Person {
 			return false;
 		try {
 			boolean login = false;
-			File file = new File("../requireData/admin-user");
+			File file = new File("C:\\Users\\smajy\\git\\manage-anime\\requireData\\adminuser.txt");
 			Scanner scanner = new Scanner(file);
 
 			String adminData = scanner.nextLine();
-			String[] admin = adminData.substring(adminData.indexOf("=")).trim().split("#");
+			String[] admin = adminData.substring(adminData.indexOf("=") + 1).trim().split("#");
 
 			String userData = scanner.nextLine();
-			String[] user = userData.substring(userData.indexOf("=")).trim().split("#");
+			String[] user = userData.substring(userData.indexOf("=") + 1).trim().split("#");
 
 			if (person instanceof Admin) {
 				if (person.getName().equalsIgnoreCase(admin[0]) && person.getPassword().equalsIgnoreCase(admin[1]))
