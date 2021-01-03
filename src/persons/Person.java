@@ -40,7 +40,8 @@ public class Person {
 	 * @return boolean. true, mean this person is registered.
 	 */
 	public boolean register(Person person) {
-
+		if(person == null)
+			return false;
 		try {
 			File file = new File("../requireData/admin-user");
 
@@ -78,7 +79,8 @@ public class Person {
 	 * @return boolean. true, mean this person is logined.
 	 */
 	public boolean login(Person person) {
-
+		if(person == null)
+			return false;
 		try {
 			boolean login = false;
 			File file = new File("../requireData/admin-user");
