@@ -5,6 +5,7 @@ import AML.AML;
 
 public class Control {
 
+	// save list AMLs
 	private static List<AML> lists;
 	
 	// TODO Load list AML in ???
