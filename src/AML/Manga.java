@@ -97,5 +97,20 @@ public class Manga {
 		this.description = description;
 	}
 	
+	/**
+	 * equal manga : (this)name = (other)name
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		if(obj.getClass() != Manga.class)
+			return false;
+		Manga other = (Manga)obj;
+		if(this.getName().equals(other.getName()))
+			return true;
+		
+		return false;
+	}
 
 }

@@ -98,4 +98,20 @@ public class LightNovel {
 		this.description = description;
 	}
 	
+	/**
+	 * equal LightNovel : (this)name = (other)name
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		if(obj.getClass() != LightNovel.class)
+			return false;
+		LightNovel other = (LightNovel)obj;
+		if(this.getName().equals(other.getName()))
+			return true;
+		
+		return false;
+	}
+	
 }

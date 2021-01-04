@@ -98,7 +98,21 @@ public class Anime {
 		this.description = description;
 	}
 	
-
+	/**
+	 * equal Anime : (this)name = (other)name
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		if(obj.getClass() != Anime.class)
+			return false;
+		Anime other = (Anime)obj;
+		if(this.getName().equals(other.getName()))
+			return true;
+		
+		return false;
+	}
 	
 	
 }
