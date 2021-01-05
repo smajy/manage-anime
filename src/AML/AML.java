@@ -7,6 +7,19 @@ package AML;
  *         save anime, I shoud save manga and light novel.
  */
 public class AML {
+	
+	public static final String ANIME = "anime";
+	public static final String MANGA = "manga";
+	public static final String LIGHTNOVEL = "lightNovel";
+	
+	public static final String NAME = "name";
+	public static final String PRODUCTION_YEAR = "productionYear";
+	public static final String NAME_MANUFACTURER = "nameManufacturer";
+	public static final String IS_END = "isEnd";
+	public static final String MYSCORE = "myScore";
+	public static final String GENERS = "genres";
+	
+	
 	private Anime anime;
 	private Manga manga;
 	private LightNovel lightNovel;
