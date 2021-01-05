@@ -22,6 +22,9 @@ public class User extends Person {
 	 * @return
 	 */
 	public AML searchAML(String aml, String m, String kind) {
+		if(m == null)
+			return null;
+		
 		if (aml.equals(AML.ANIME))
 			return searchAML(searchAnime(m, kind));
 
@@ -66,29 +69,28 @@ public class User extends Person {
 	}
 
 	public Anime searchAnime(String m, String kind) {
-
+		if(m == null || kind == null)
+			return null;
 		List<Anime> animes = Control.getAnimes();
 
 		switch (kind) {
 		case AML.NAME:
 			for (Anime ani : animes) {
-				if (ani.getName().equalsIgnoreCase(m))
+				if (m.equalsIgnoreCase(ani.getName()))
 					return ani;
 			}
-			return null;
+
 		case AML.NAME_MANUFACTURER:
 			for (Anime ani : animes) {
-				if (ani.getNameManufacturer().equalsIgnoreCase(m))
+				if (m.equalsIgnoreCase(ani.getNameManufacturer()))
 					return ani;
 			}
-			return null;
 
 		case AML.PRODUCTION_YEAR:
 			for (Anime ani : animes) {
-				if (ani.getProductionYear().equalsIgnoreCase(m))
+				if (m.equalsIgnoreCase(ani.getProductionYear()))
 					return ani;
 			}
-			return null;
 
 		case AML.IS_END:
 			for (Anime ani : animes) {
@@ -96,9 +98,11 @@ public class User extends Person {
 					if (m.equals("true")) {
 						return ani;
 					}
+				} else {
+					if(m.equals("false"))
+						return ani;
 				}
 			}
-			return null;
 
 		case AML.MYSCORE:
 			for (Anime ani : animes) {
@@ -106,83 +110,82 @@ public class User extends Person {
 				if (ani.getMyScore() == s)
 					return ani;
 			}
-			return null;
-
+	
 		default:
 			return null;
 		}
 	}
 
 	public Manga searchManga(String m, String kind) {
-		List<Manga> animes = Control.getMangas();
+		if(m == null || kind == null)
+			return null;
+		List<Manga> mangas = Control.getMangas();
 
 		switch (kind) {
 		case AML.NAME:
-			for (Manga ani : animes) {
-				if (ani.getName().equalsIgnoreCase(m))
-					return ani;
+			for (Manga man : mangas) {
+				if (m.equalsIgnoreCase(man.getName()))
+					return man;
 			}
-			return null;
 		case AML.NAME_MANUFACTURER:
-			for (Manga ani : animes) {
-				if (ani.getNameManufacturer().equalsIgnoreCase(m))
-					return ani;
+			for (Manga man : mangas) {
+				if (m.equalsIgnoreCase(man.getNameManufacturer()))
+					return man;
 			}
-			return null;
 
 		case AML.PRODUCTION_YEAR:
-			for (Manga ani : animes) {
-				if (ani.getProductionYear().equalsIgnoreCase(m))
-					return ani;
+			for (Manga man : mangas) {
+				if (m.equalsIgnoreCase(man.getProductionYear()))
+					return man;
 			}
-			return null;
 
 		case AML.IS_END:
-			for (Manga ani : animes) {
-				if (ani.isEnd()) {
+			for (Manga man : mangas) {
+				if (man.isEnd()) {
 					if (m.equals("true")) {
-						return ani;
+						return man;
 					}
+				}else {
+					if(m.equals("false"))
+						return man;
 				}
 			}
-			return null;
 
 		case AML.MYSCORE:
-			for (Manga ani : animes) {
+			for (Manga man : mangas) {
 				int s = Integer.parseInt(m);
-				if (ani.getMyScore() == s)
-					return ani;
+				if (man.getMyScore() == s)
+					return man;
 			}
-			return null;
 
 		default:
 			return null;
+		
 		}
 	}
 
 	public LightNovel searchLightNovel(String m, String kind) {
+		if(m == null || kind == null)
+			return null;
 		List<LightNovel> lightNovels = Control.getLightNovels();
 		
 		switch (kind) {
 		case AML.NAME:
 			for(LightNovel light : lightNovels) {
-				if(light.getName().equalsIgnoreCase(m))
+				if(m.equalsIgnoreCase(light.getName()))
 					return light;
 			}
-			return null;
 		case AML.NAME_MANUFACTURER:
 			for(LightNovel light : lightNovels) {
-				if(light.getNameManufacturer().equalsIgnoreCase(m))
+				if(m.equalsIgnoreCase(light.getNameManufacturer()))
 					return light;
 			}
-			return null;
 
 		case AML.PRODUCTION_YEAR:
 			for(LightNovel light : lightNovels) {
-				if(light.getProductionYear().equalsIgnoreCase(m))
+				if(m.equalsIgnoreCase(light.getProductionYear()))
 					return light;
 			}
-			return null;
 
 		case AML.IS_END:
 			for(LightNovel light : lightNovels) {
@@ -190,9 +193,11 @@ public class User extends Person {
 					if (m.equals("true")) {
 						return light;
 					}
+				} else {
+					if(m.equals("false"))
+						return light;
 				}
 			}
-			return null;
 
 		case AML.MYSCORE:
 			for(LightNovel light : lightNovels) {
@@ -200,7 +205,6 @@ public class User extends Person {
 				if(light.getMyScore() == s)
 					return light;
 			}
-			return null;
 
 		default:
 			return null;

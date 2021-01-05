@@ -25,7 +25,10 @@ public class Control {
 	public static List<Anime> getAnimes(){
 		List<Anime> list = new ArrayList<>();
 		for(AML aml : lists) {
-			list.add(aml.getAnime());
+			Anime anime = aml.getAnime();
+			if(anime == null)
+				continue;
+			list.add(anime);
 		}
 		return list;
 	}
@@ -33,7 +36,10 @@ public class Control {
 	public static List<Manga> getMangas(){
 		List<Manga> list = new ArrayList<>();
 		for(AML aml : lists) {
-			list.add(aml.getManga());
+			Manga manga = aml.getManga();
+			if(manga == null)
+				continue;
+			list.add(manga);
 		}
 		return list;
 	}
@@ -41,7 +47,10 @@ public class Control {
 	public static List<LightNovel> getLightNovels(){
 		List<LightNovel> list = new ArrayList<>();
 		for(AML aml : lists) {
-			list.add(aml.getLightNovel());
+			LightNovel lightNovel = aml.getLightNovel();
+			if(lightNovel == null)
+				continue;
+			list.add(lightNovel);
 		}
 		return list;
 	}
