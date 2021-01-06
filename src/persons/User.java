@@ -242,4 +242,24 @@ public class User extends Person {
 		}
 		return false;
 	}
+	
+	/**
+	 * delete AML after watch it.
+	 * add to list deleted
+	 * remove from list amls
+	 * @param aml
+	 * @param kind
+	 * @param myScore
+	 * @param description
+	 * @return
+	 */
+	public boolean deleteAML(AML aml, String description) {
+		Control.getLists().remove(aml);
+		aml.getAnime().setDescription(description);
+		aml.getManga().setDescription(description);
+		aml.getLightNovel().setDescription(description);
+		Control.getDeletedAMLs().add(aml);
+		return true;
+	}
+	
 }

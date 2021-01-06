@@ -13,13 +13,20 @@ public class Control {
 	// save list AMLs
 	private static List<AML> lists;
 	
+	private static List<AML> deletedAMLs;
+	
 	// TODO Load list AML in ???
 	static {
 		lists = new ArrayList<>();
+		deletedAMLs = new ArrayList<>();
 	}
 	
 	public static List<AML> getLists() {
 		return lists;
+	}
+	
+	public static List<AML> getDeletedAMLs() {
+		return deletedAMLs;
 	}
 	
 	public static List<Anime> getAnimes(){
