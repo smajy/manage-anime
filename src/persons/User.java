@@ -15,16 +15,16 @@ public class User extends Person {
 	}
 
 	/**
-	 *  
-	 * @param aml is ANIME or MANGA or LIGHTNOVEL
-	 * @param m is Strign require
+	 * 
+	 * @param aml  is ANIME or MANGA or LIGHTNOVEL
+	 * @param m    is Strign require
 	 * @param kind is NAME, MANUFACTORNAME, YEARS ,...
 	 * @return
 	 */
 	public AML searchAML(String aml, String m, String kind) {
-		if(m == null)
+		if (m == null)
 			return null;
-		
+
 		if (aml.equals(AML.ANIME))
 			return searchAML(searchAnime(m, kind));
 
@@ -69,7 +69,7 @@ public class User extends Person {
 	}
 
 	public Anime searchAnime(String m, String kind) {
-		if(m == null || kind == null)
+		if (m == null || kind == null)
 			return null;
 		List<Anime> animes = Control.getAnimes();
 
@@ -99,7 +99,7 @@ public class User extends Person {
 						return ani;
 					}
 				} else {
-					if(m.equals("false"))
+					if (m.equals("false"))
 						return ani;
 				}
 			}
@@ -110,14 +110,14 @@ public class User extends Person {
 				if (ani.getMyScore() == s)
 					return ani;
 			}
-	
+
 		default:
 			return null;
 		}
 	}
 
 	public Manga searchManga(String m, String kind) {
-		if(m == null || kind == null)
+		if (m == null || kind == null)
 			return null;
 		List<Manga> mangas = Control.getMangas();
 
@@ -145,8 +145,8 @@ public class User extends Person {
 					if (m.equals("true")) {
 						return man;
 					}
-				}else {
-					if(m.equals("false"))
+				} else {
+					if (m.equals("false"))
 						return man;
 				}
 			}
@@ -160,54 +160,86 @@ public class User extends Person {
 
 		default:
 			return null;
-		
+
 		}
 	}
 
 	public LightNovel searchLightNovel(String m, String kind) {
-		if(m == null || kind == null)
+		if (m == null || kind == null)
 			return null;
 		List<LightNovel> lightNovels = Control.getLightNovels();
-		
+
 		switch (kind) {
 		case AML.NAME:
-			for(LightNovel light : lightNovels) {
-				if(m.equalsIgnoreCase(light.getName()))
+			for (LightNovel light : lightNovels) {
+				if (m.equalsIgnoreCase(light.getName()))
 					return light;
 			}
 		case AML.NAME_MANUFACTURER:
-			for(LightNovel light : lightNovels) {
-				if(m.equalsIgnoreCase(light.getNameManufacturer()))
+			for (LightNovel light : lightNovels) {
+				if (m.equalsIgnoreCase(light.getNameManufacturer()))
 					return light;
 			}
 
 		case AML.PRODUCTION_YEAR:
-			for(LightNovel light : lightNovels) {
-				if(m.equalsIgnoreCase(light.getProductionYear()))
+			for (LightNovel light : lightNovels) {
+				if (m.equalsIgnoreCase(light.getProductionYear()))
 					return light;
 			}
 
 		case AML.IS_END:
-			for(LightNovel light : lightNovels) {
-				if(light.isEnd()) {
+			for (LightNovel light : lightNovels) {
+				if (light.isEnd()) {
 					if (m.equals("true")) {
 						return light;
 					}
 				} else {
-					if(m.equals("false"))
+					if (m.equals("false"))
 						return light;
 				}
 			}
 
 		case AML.MYSCORE:
-			for(LightNovel light : lightNovels) {
+			for (LightNovel light : lightNovels) {
 				int s = Integer.parseInt(m);
-				if(light.getMyScore() == s)
+				if (light.getMyScore() == s)
 					return light;
 			}
 
 		default:
 			return null;
 		}
+	}
+
+	/**
+	 * save anime after watch it.
+	 * and save score
+	 * and save description
+	 * @param aml
+	 * @param kind
+	 * @param myScore
+	 * @param description
+	 * @return
+	 */
+	public boolean saveAML(AML aml, String kind, int myScore, String description) {
+		if (kind == null)
+			return false;
+		if (kind.equals(AML.ANIME)) {
+			Anime anime = aml.getAnime();
+			anime.setEnd(true);
+			anime.setMyScore(myScore);
+			anime.setDescription(description);
+		} else if (kind.equals(AML.MANGA)) {
+			Manga manga = aml.getManga();
+			manga.setEnd(true);
+			manga.setMyScore(myScore);
+			manga.setDescription(description);
+		} else if (kind.equals(AML.LIGHTNOVEL)) {
+			LightNovel lightNovel = aml.getLightNovel();
+			lightNovel.setEnd(true);
+			lightNovel.setMyScore(myScore);
+			lightNovel.setDescription(description);
+		}
+		return false;
 	}
 }
