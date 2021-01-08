@@ -1,2 +1,2 @@
 ## ClassDiagram
-![ClassDiagram](files/Class Diagram.jpg)
+![ClassDiagram](files/Class%20Diagram.jpg)
