@@ -1,2 +1,2 @@
 ## UseCase Diagram
-![UseCase Diagram](files/use case.jpg)
+![UseCase Diagram](files/use%20case.jpg)
