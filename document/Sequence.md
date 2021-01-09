@@ -3,5 +3,5 @@
 ## 2 User
 ![Sequence](files/seqUser.jpg)
 ## 3 Admin 
-![Sequence](images/files/SeqAddUpdateAdmin.jpg)
+![Sequence](files/SeqAddUpdateAdmin.jpg)
 
