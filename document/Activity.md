@@ -1,5 +1,5 @@
 ## 1 Login
-![alt text](activityLogin.jpg)
+![alt text](files/activityLogin.jpg)
 ## 2 Admin
 ![alt text](files/activityAdmin.jpg)
 ## 3 User
