@@ -257,6 +257,8 @@ public class User extends Person {
 	 * @return
 	 */
 	public boolean deleteAML(AML aml, String description) {
+		if(aml == null)
+			return false;
 		Control.getLists().remove(aml);
 		aml.getAnime().setDescription(description);
 		aml.getManga().setDescription(description);
