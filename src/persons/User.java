@@ -222,23 +222,26 @@ public class User extends Person {
 	 * @return
 	 */
 	public boolean saveAML(AML aml, String kind, int myScore, String description) {
-		if (kind == null)
+		if (kind == null || aml == null)
 			return false;
 		if (kind.equals(AML.ANIME)) {
 			Anime anime = aml.getAnime();
 			anime.setEnd(true);
 			anime.setMyScore(myScore);
 			anime.setDescription(description);
+			return true;
 		} else if (kind.equals(AML.MANGA)) {
 			Manga manga = aml.getManga();
 			manga.setEnd(true);
 			manga.setMyScore(myScore);
 			manga.setDescription(description);
+			return true;
 		} else if (kind.equals(AML.LIGHTNOVEL)) {
 			LightNovel lightNovel = aml.getLightNovel();
 			lightNovel.setEnd(true);
 			lightNovel.setMyScore(myScore);
 			lightNovel.setDescription(description);
+			return true;
 		}
 		return false;
 	}
