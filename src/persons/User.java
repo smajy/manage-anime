@@ -1,9 +1,11 @@
 package persons;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import AML.AML;
 import AML.Anime;
+import AML.Grouping;
 import AML.LightNovel;
 import AML.Manga;
 import control.Control;
@@ -265,6 +267,23 @@ public class User extends Person {
 		aml.getLightNovel().setDescription(description);
 		Control.getDeletedAMLs().add(aml);
 		return true;
+	}
+	
+	public boolean changeGroup(AML aml, Grouping g) {
+		if(aml == null || g == null)
+			return false;
+		aml.setGroup(g);
+		return true;
+	}
+	
+	public List<AML> getAMLGroup(Grouping grouping){
+		List<AML> groups = new ArrayList<>();
+		List<AML> list = Control.getLists();
+		for (AML aml : list) {
+			if(aml.getGroup().equals(grouping))
+				groups.add(aml);
+		}
+		return groups;
 	}
 	
 }

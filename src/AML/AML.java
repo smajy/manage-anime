@@ -23,12 +23,22 @@ public class AML {
 	private Anime anime;
 	private Manga manga;
 	private LightNovel lightNovel;
+	private Grouping group;
 
 	public AML(Anime anime, Manga manga, LightNovel lightNovel) {
 		super();
 		this.anime = anime;
 		this.manga = manga;
 		this.lightNovel = lightNovel;
+		this.group = Grouping.NEXT;
+	}
+
+	public AML(Anime anime, Manga manga, LightNovel lightNovel , Grouping grouping) {
+		super();
+		this.anime = anime;
+		this.manga = manga;
+		this.lightNovel = lightNovel;
+		this.group = grouping;
 	}
 
 	public Anime getAnime() {
@@ -53,6 +63,13 @@ public class AML {
 
 	public void setLightNovel(LightNovel lightNovel) {
 		this.lightNovel = lightNovel;
+	}
+	
+	public Grouping getGroup() {
+		return group;
+	}
+	public void setGroup(Grouping group) {
+		this.group = group;
 	}
 
 	/**
